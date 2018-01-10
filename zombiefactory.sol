@@ -19,7 +19,9 @@ contract ZombieFactory {
     mapping (uint => address) public zombieToOwner;
     mapping (address => uint) ownerZombieCount;
 
-    function _createZombie(string _name, uint _dna) private {
+    // this is an internal function, like private but can also be called when inherited
+    // note: external (not used here) can only be called outside the contract
+    function _createZombie(string _name, uint _dna) internal {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         // msg.sender is the address of the caller
         zombieToOwner[id] = msg.sender;
@@ -28,6 +30,8 @@ contract ZombieFactory {
         NewZombie(id, _name, _dna);
     }
 
+    // view functions can access but not change storage variables
+    // note: pure (not used here) is all self contained and only uses the parameters
     function _generateRandomDna(string _str) private view returns (uint) {
         uint rand = uint(keccak256(_str));
         return rand % dnaModulus;
