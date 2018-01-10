@@ -21,6 +21,7 @@ contract ZombieFactory {
 
     function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        // msg.sender is the address of the caller
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         // call the event, so the listeners will get the notice of a new created zombie
