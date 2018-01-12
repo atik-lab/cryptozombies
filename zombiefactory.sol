@@ -1,16 +1,21 @@
 pragma solidity ^0.4.19;
 
-contract ZombieFactory {
+import "./ownable.sol";
+
+contract ZombieFactory is Ownable {
 
     // a normal program can listen to this blockchain event
     event NewZombie(uint zombieId, string name, uint dna);
 
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
+    uint cooldownTime = 1 days;
 
     struct Zombie {
         string name;
         uint dna;
+        uint32 level;
+        uint32 readyTime;
     }
 
     Zombie[] public zombies;
@@ -22,7 +27,7 @@ contract ZombieFactory {
     // this is an internal function, like private but can also be called when inherited
     // note: external (not used here) can only be called outside the contract
     function _createZombie(string _name, uint _dna) internal {
-        uint id = zombies.push(Zombie(_name, _dna)) - 1;
+        uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         // msg.sender is the address of the caller
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
