@@ -1,0 +1,15 @@
+.App {
+  text-align: left;
+  margin: auto;
+  width: 60%;
+}
+
+h1 {
+  font-size: 3em;  
+}
+
+small {
+  color: gray;
+  display: inline-block;
+  margin-right: 0.75em;
+}

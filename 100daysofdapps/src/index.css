@@ -1,0 +1,121 @@
+body { 
+  font-family: 'Roboto', sans-serif;
+  /* color: #333;  */
+  color: #49555f;
+  line-height: 1.25; 
+  margin: 2em; 
+} 
+
+
+a {
+  color: #337ab7; 
+  text-decoration: none; 
+}
+
+.topbar {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  top: 0px;
+  z-index: 30;
+  padding: 6px;
+  left: 50%;
+  transform: translate(-50% , 0%);
+}
+
+.topbar.success {
+  background: rgb(39, 150, 39);
+}
+
+.topbar.fail {
+  background: #c12d2d;
+}
+
+.topbar a {
+  color: white;
+  text-decoration: underline;
+}
+
+.back-button {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: black;
+  color: white;
+  border-bottom-right-radius: 5px;
+  padding: 0.5em;
+}
+
+.success-text {
+  color:  rgb(39, 150, 39);
+}
+
+.fail-text {
+  color: #c12d2d;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 900px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    .App {
+      width: 100% !important;
+    }
+
+    .topbar {
+      width: 30%;
+      position: absolute;
+      font-size: 0.7em;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    .back-button {
+      width: 100px;
+    }
+
+    p {
+      font-size: 0.5em;
+    }
+
+    a, p, div {
+        /* font-size: 0.7em; */
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+    a {
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+
+    }
+
+    ul {
+          padding-left: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    * {
+      flex-direction: column;
+    }
+
+}
+
+button {
+  background: none;
+  color: #49555f;
+}
+
+.rv-xy-plot {
+  margin: auto;
+}
